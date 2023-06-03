@@ -1,0 +1,49 @@
+import matplotlib.pyplot as plt
+import numpy as np
+# Введение исходных данных
+print('Введите количество слагаемых k в частичной сумме')
+k = int(input())
+
+# Общий ряд и ряд косинусов
+# Строим исходную функцию
+# x = np.arange(-2,-1,0.01)
+# y = -abs(x)+1
+# plt.plot(x,y,color='r')
+x = np.arange(-1, 1, 0.01)
+q = abs(x)-1
+plt.plot(x, q, color='r')
+# x = np.arange(1,2,0.01)
+# z = -x+1
+# plt.plot(x,z,color='r')
+plt.title('cos')
+# Строим ряд Фурье
+w = -0.5
+for i in range(k):
+   x = np.arange(-2, 2, 0.01)
+   a = 2/(np.pi**2*(i+1)**2)*((-1)**(i+1)-1)*np.cos(np.pi*x*(i+1))
+   w = w + a
+plt.plot(x, w, color="g")
+plt.show()
+# Ряд для синусов
+# Строим исходную функцию
+x = np.arange(-2, -1, 0.01)
+q = -x-1
+plt.plot(x, q, color='r')
+x = np.arange(-1, 0, 0.01)
+q = x+1
+plt.plot(x, q, color='r')
+x = np.arange(0, 1, 0.01)
+q = x-1
+plt.plot(x, q, color='r')
+x = np.arange(1, 2, 0.01)
+q = -x+1
+plt.plot(x, q, color='r')
+plt.title('sin')
+# Строим ряд Фурье
+w = 0
+for i in range(k):
+   x = np.arange(-2, 2, 0.01)
+   a = ((8*np.sin(np.pi*(i+1)/2)+2*np.pi*(i+1)*((-1)**(i+1)-1))*np.sin((i+1)*np.pi*x/2))/(np.pi**2*(i+1)**2)
+   w = w + a
+plt.plot(x, w, color="g")
+plt.show()
